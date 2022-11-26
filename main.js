@@ -17,12 +17,12 @@ async function consultarUsuario(usuario) {
   let response = await fetch(`https://api.github.com/users/${usuario}`)
   let dadosUsuario = await response.json();
 
-  if (dadosUsuario.name === 'undefined') {
+  if (dadosUsuario.name === undefined) {
     informacoes.innerHTML = `<div class="erro">Usuario não encontrado!</div>`
   } else {
     informacoes.innerHTML = `
-      <p>Foto: <img src="${dadosUsuario.avatar_url}"></p>
-        <p>Nome: ${dadosUsuario.name}</p>
+      <p><img src="${dadosUsuario.avatar_url}"></p>
+        <p>${dadosUsuario.name}</p>
         <a href="${dadosUsuario.html_url}">Perfil no GitHub</a>  
       `
   }
