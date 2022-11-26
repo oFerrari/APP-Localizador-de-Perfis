@@ -17,7 +17,7 @@ async function consultarUsuario(usuario) {
   let response = await fetch(`https://api.github.com/users/${usuario}`)
   let dadosUsuario = await response.json();
 
-  if (dadosUsuario.erro) {
+  if (dadosUsuario.name === 'undefined') {
     informacoes.innerHTML = `<div class="erro">Usuario não encontrado!</div>`
   } else {
     informacoes.innerHTML = `
@@ -25,7 +25,6 @@ async function consultarUsuario(usuario) {
         <p>Nome: ${dadosUsuario.name}</p>
         <a href="${dadosUsuario.html_url}">Perfil no GitHub</a>  
       `
-
   }
   ativaLoader(false)
 }
